@@ -2,9 +2,9 @@ import {nanoid} from 'nanoid'
 
 export const generateNode = (
   {actions, createNodeId, createContentDigest},
-  {content},
+  {content, title},
 ) => {
-  const nodeData = {content}
+  const nodeData = {content, title}
   const key = nanoid()
   const nodeId = createNodeId(`gatsby-source-gh-${key}`)
   const nodeContent = JSON.stringify(nodeData)

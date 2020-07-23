@@ -12,8 +12,8 @@ export const sourceNodes = async (
 
   const repoFileContents = await fetchRepoContentsRecursive(user, repo)
 
-  repoFileContents.map(content =>
-    generateNode({actions, createNodeId, createContentDigest}, {content}),
+  repoFileContents.map(file =>
+    generateNode({actions, createNodeId, createContentDigest}, file),
   )
 
   console.log(

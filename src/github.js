@@ -14,7 +14,7 @@ const fetchRepoFileURLsRecursive = async (user, repoName, path = '') => {
           if (BLACKLISTED_DIRS.includes(repoNode.name)) return
           return fetchRepoFileURLsRecursive(user, repoName, repoNode.path)
         case 'file':
-          return repoNode.download_url
+          return {title: repoNode.name, url: repoNode.download_url}
         default:
           break
       }
@@ -25,9 +25,14 @@ const fetchRepoFileURLsRecursive = async (user, repoName, path = '') => {
 }
 
 export const fetchRepoContentsRecursive = async (user, repo) => {
-  const repoFileURLs = await fetchRepoFileURLsRecursive(user, repo)
-  const repoFilesRes = await Promise.all(repoFileURLs.map(url => fetch(url)))
+  // let these throw, if anything fails we want to know about it
+  const repoFiles = await fetchRepoFileURLsRecursive(user, repo)
+  const repoFilesRes = await Promise.all(repoFiles.map(({url}) => fetch(url)))
   const repoFilesText = await Promise.all(repoFilesRes.map(res => res.text()))
+  const repoFilesWithTitles = repoFilesText.map((content, idx) => ({
+    title: repoFiles[idx].title,
+    content,
+  }))
 
-  return repoFilesText
+  return repoFilesWithTitles
 }
