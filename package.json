@@ -1,5 +1,5 @@
 {
-  "name": "gatsby-source-gh",
+  "name": "@shwilliam/gatsby-source-gh",
   "version": "0.1.0",
   "description": "Gatsby source plugin for GitHub repositories",
   "scripts": {
@@ -11,6 +11,9 @@
   "repository": {
     "type": "git",
     "url": "git+https://github.com/shwilliam/gatsby-source-gh.git"
+  },
+  "publishConfig": {
+    "registry": "https://npm.pkg.github.com/shwilliam"
   },
   "keywords": [
     "gatsby",
