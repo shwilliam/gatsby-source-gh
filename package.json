@@ -25,7 +25,6 @@
   },
   "homepage": "https://github.com/shwilliam/gatsby-source-gh#readme",
   "dependencies": {
-    "nanoid": "^3.1.10",
     "node-fetch": "^2.6.0"
   },
   "devDependencies": {
