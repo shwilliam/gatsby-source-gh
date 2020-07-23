@@ -1,7 +1,41 @@
+{
+  "name": "gatsby-source-gh",
+  "version": "0.1.0",
+  "description": "Gatsby source plugin for GitHub repositories",
+  "scripts": {
+    "build": "babel src --out-dir .",
+    "prepublishOnly": "cross-env NODE_ENV=production npm run build",
+    "watch": "babel -w src --out-dir .",
+    "postversion": "sh changelog.sh > CHANGELOG.md"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/shwilliam/gatsby-source-gh.git"
+  },
+  "keywords": [
+    "gatsby",
+    "gatsby-source-plugin",
+    "gatsby-plugin",
+    "github"
+  ],
+  "author": "William Lindvall <shwilliam@hey.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/shwilliam/gatsby-source-gh/issues"
+  },
+  "homepage": "https://github.com/shwilliam/gatsby-source-gh#readme",
   "dependencies": {
     "nanoid": "^3.1.10",
+    "node-fetch": "^2.6.0"
+  },
   "devDependencies": {
     "@babel/cli": "^7.10.5",
     "@babel/core": "^7.10.5",
     "@babel/preset-env": "^7.10.4",
     "babel-preset-gatsby-package": "^0.5.2",
+    "cross-env": "^7.0.2"
+  },
+  "peerDependencies": {
+    "gatsby": "^2.12.1"
+  }
+}
