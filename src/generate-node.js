@@ -1,13 +1,9 @@
-import {nanoid} from 'nanoid'
-
 export const generateNode = (
   {actions, createNodeId, createContentDigest},
-  {content, title},
+  file,
 ) => {
-  const nodeData = {content, title}
-  const key = nanoid()
-  const nodeId = createNodeId(`gatsby-source-gh-${key}`)
-  const nodeContent = JSON.stringify(nodeData)
+  const nodeId = createNodeId(`gatsby-source-gh-${file.path}`)
+  const nodeContent = JSON.stringify(file)
 
   const nodeMeta = {
     id: nodeId,
@@ -16,9 +12,9 @@ export const generateNode = (
     internal: {
       type: 'GitHubFile',
       content: nodeContent,
-      contentDigest: createContentDigest(nodeData),
+      contentDigest: createContentDigest(file),
     },
   }
 
-  actions.createNode({...nodeData, ...nodeMeta})
+  actions.createNode({...file, ...nodeMeta})
 }
