@@ -28,7 +28,7 @@
   },
   "homepage": "https://github.com/shwilliam/gatsby-source-gh#readme",
   "dependencies": {
-    "node-fetch": "^2.6.0"
+    "node-fetch": "^3.1.1"
   },
   "devDependencies": {
     "@babel/cli": "^7.10.5",
